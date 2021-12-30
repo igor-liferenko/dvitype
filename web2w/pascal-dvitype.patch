@@ -1,0 +1,37 @@
+diff --git a/web2w/pascal.y b/web2w/pascal.y
+--- a/web2w/pascal.y
++++ b/web2w/pascal.y
+@@ -223,7 +223,7 @@
+          }
+        ;
+ 
+-programheading: PPROGRAM PID PSEMICOLON  {IGN($2); IGN($3); }
++programheading: PPROGRAM PID POPEN PID PCOMMA PID PCLOSE PSEMICOLON  {IGN($2); IGN($3); IGN($4); IGN($5); IGN($6); IGN($7); IGN($8); }
+               ;
+ 
+ globals: labels constants types variables procedures ;
+@@ -576,6 +576,7 @@
+ 
+ 
+ write_arg: expression PCOLON expression {$$=$2; }
++           | expression PCOLON expression PCOLON expression {$$=$2; }
+             ;
+ 
+ statements: statement {$$=$1; }
+@@ -674,6 +675,7 @@
+           | CCASE NMACRO
+           | CCASE PINTEGER
+           | CCASE NMACRO PPLUS NMACRO 
++          | CCASE NMACRO PPLUS PINTEGER
+           | NMACRO PMINUS NMACRO PPLUS NMACRO  
+ 	  {winsert_after($1->previous,CCASE,"case ");  /* etex */ }
+           ;
+@@ -703,7 +705,7 @@
+                 $$=join(PFOR,$8,NULL,0);LNK($1,$5);LNK($5,$7); } 
+         ;
+ 
+-varlimit: variable | variable PMINUS expression | variable PPLUS expression| iconst PSTAR expression;
++varlimit: variable | variable PMINUS expression | variable PPLUS expression| iconst PSTAR expression | iconst PPLUS variable;
+ 
+ variable: PID
+         | CREFID
