@@ -10,3 +10,4 @@ all:
 	@sed -i '821s/file/File/;1752,1756s/+/,/g' dvitype-web2w.web
 	./web2w -o cdvitype.w dvitype-web2w.web
 	patch cdvitype.w cdvitype.patch
+	patch cdvitype.w 0001-Wrap-long-lines-for-plain-CWEB-4.6-3.64c.patch
