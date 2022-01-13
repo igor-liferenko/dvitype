@@ -1,6 +1,6 @@
 all:
 	tie -c web2w.ch web2w.w web2w-dvitype.ch web2w-stringpool.ch
-	/bin/ctangle web2w web2w
+	ctangle web2w web2w
 	patch -o web-dvitype.l web.l web-dvitype.patch
 	flex -o web.lex.c web-dvitype.l
 	patch -o pascal-dvitype.y pascal.y pascal-dvitype.patch
