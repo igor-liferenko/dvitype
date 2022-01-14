@@ -11,7 +11,7 @@ diff --git a/cdvitype.w b/cdvitype.w
 index 7071e89..085672d 100644
 --- a/cdvitype.w
 +++ b/cdvitype.w
-@@ -1726,9 +1726,12 @@ called |hstack|, \dots, |zstack|, |hhstack|, and |vvstack|.
+@@ -1728,9 +1728,12 @@ called |hstack|, \dots, |zstack|, |hhstack|, and |vvstack|.
  @<Glob...@>=
  int @!h, @!v, @!w, @!x, @!y, @!z, @!hh, @!vv; /*current state values*/ 
  
@@ -26,7 +26,7 @@ index 7071e89..085672d 100644
  
  @ Three characteristics of the pages (their |max_v|, |max_h|, and
  |max_s|) are specified in the postamble, and a warning message
-@@ -1767,15 +1770,24 @@ opcode.
+@@ -1769,15 +1772,24 @@ opcode.
  {@+switch (o) {
  sixty_four_cases(set_char_0): sixty_four_cases(set_char_0+64): 
    return o-set_char_0;@+break;
