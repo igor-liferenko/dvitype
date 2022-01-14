@@ -1,5 +1,5 @@
 all:
-	tie -c web2w.ch web2w.w web2w-dvitype.ch web2w-stringpool.ch
+	tie -c web2w.ch web2w.w web2w-dvitype.ch web2w-stringpool.ch >/dev/null
 	ctangle web2w web2w
 	patch -o web-dvitype.l web.l web-dvitype.patch
 	flex -o web.lex.c web-dvitype.l
