@@ -1,3 +1,11 @@
 dvitype.w
 dvitype.c
 dvitype
+dvitype.arg
+dvitype.dvi
+dvitype.idx
+dvitype.log
+dvitype.pdf
+dvitype.scn
+dvitype.tex
+dvitype.toc
