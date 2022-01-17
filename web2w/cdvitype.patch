@@ -241,7 +241,7 @@
  
  @<Glob...@>=
 -uint8_t @!default_directory0[default_directory_name_length], *const @!default_directory = @!default_directory0-1;
-+char @!default_directory[1+default_directory_name_length+1];
++char @!default_directory0[default_directory_name_length+1], *const @!default_directory = @!default_directory0-1;
  
  @ @<Set init...@>=
 -default_directory=default_directory_name;
