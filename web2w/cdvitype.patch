@@ -9,6 +9,19 @@
 +@d print(...) write(output,__VA_ARGS__)
 +@d print_ln(X,...) print(X"\n",##__VA_ARGS__)
  
++@d chr(X) ((unsigned char)(X))
++@d get(file) file.d=fgetc(file.f)
++@d read(file,x) x=file.d,get(file)
++@d eof(file) (file.f==NULL||feof(file.f))
++@d set_pos(file,n) fseek(file.f,n,SEEK_SET),get(file)
++@d eoln(file) (file.d=='\n'||feof(file.f))
++@d reset(file) file.f=stdin,get(file)
++@d read_ln(file)
++@d rewrite(file) file.f=stdout
++@d break(file) fflush(file.f)
++@d write(file,...) fprintf(file.f,__VA_ARGS__)
++@d write_ln(file,X) write(file,X"\n")
++
  @p@!@!
 +#include <stdint.h>
 +#include <stdbool.h>
@@ -18,19 +31,6 @@
 +#include <math.h>
 +
 +@h
-+
-+#define chr(X) ((unsigned char)(X))
-+#define get(file) file.d=fgetc(file.f)
-+#define read(file,x) x=file.d,get(file)
-+#define eof(file) (file.f==NULL||feof(file.f))
-+#define set_pos(file,n) fseek(file.f,n,SEEK_SET),get(file)
-+#define eoln(file) (file.d=='\n'||feof(file.f))
-+#define reset(file) file.f=stdin,get(file)
-+#define read_ln(file)
-+#define rewrite(file) file.f=stdout
-+#define break(file) fflush(file.f)
-+#define write(file,...) fprintf(file.f,__VA_ARGS__)
-+#define write_ln(file,X) write(file,X"\n")
 +
  @<Labels in the outer block@>@;
  @<Constants in the outer block@>@;
