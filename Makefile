@@ -3,4 +3,4 @@ all:
 	cp web2w/cdvitype.w dvitype.w
 	ctangle dvitype
 	gcc dvitype.c -o dvitype -lm
-	cweave dvitype && pdftex dvitype
+	cweave -f dvitype && pdftex dvitype
