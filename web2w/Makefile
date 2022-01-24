@@ -11,3 +11,6 @@ all:
 	./web2w -o cdvitype.w dvitype-web2w.web
 	patch cdvitype.w cdvitype.patch
 	patch cdvitype.w 0001-Wrap-long-lines-for-plain-CWEB-4.6-3.64c.patch
+	weave dvitype && \
+		sed -i '1s/input webmac/input pwebmac/' dvitype.tex && \
+		pdftex dvitype
