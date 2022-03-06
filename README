@@ -1,1 +1,41 @@
 Based on https://w3-o.cs.hm.edu/users/ruckert/public_html/web2w/
+
+Add this `dvitype' script to PATH:
+
+    #!/bin/sh
+    while true; do
+      case $1 in
+      -output-level)
+        shift
+        output_level=$1
+        ;;
+      -page-start)
+        shift
+        page_start=$1
+        ;;
+      -max-pages)
+        shift
+        max_pages=$1
+        ;;
+      -dpi)
+        shift
+        resolution=`echo $1 | tr -d .`/1`echo $1 | cut -sd. -f2 | tr 0-9 0`
+        ;;
+      -magnification)
+        shift
+        new_mag=$1
+        ;;
+      *)
+        break
+        ;;
+      esac
+      shift
+    done
+    exec /path/to/dvitype/dvitype ${1%.dvi}.dvi /dev/stdout "$output_level" "$page_start" "$max_pages" "$resolution" "$new_mag"
+
+-----------------------------------
+
+Other WEB programs converted to CWEB:
+
+    https://github.com/igor-liferenko/tex
+    https://github.com/igor-liferenko/mf
