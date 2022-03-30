@@ -1,13 +1,7 @@
 @x
-#define rewrite(file) @[file.f=stdout@]
-@y
-#define rewrite(file) file.f = fopen("/dev/null", "w")
-@z
-
-@x
 @p void input_ln(void) /*inputs a line from the terminal*/
 {@+uint8_t k;
-update_terminal;reset(term_in);
+update_terminal;if(!term_in.f)term_in.f=stdin,get(term_in);
 if (eoln(term_in)) read_ln(term_in);
 k=0;
 while ((k < terminal_line_length)&&!eoln(term_in))
@@ -26,6 +20,12 @@ void input_ln(void) /*inputs next argv*/
   buffer[k] = ' ';
   av++;
 }
+@z
+
+@x
+term_out.f=stdout; /*prepare the terminal for output*/
+@y
+term_out.f=fopen("/dev/null","w");
 @z
 
 @x

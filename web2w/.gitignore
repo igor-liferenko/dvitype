@@ -1,4 +1,3 @@
-web2w.ch
 dvitype-web2w.web
 pascal-dvitype.y
 pascal-dvitype.output
@@ -9,5 +8,4 @@ web.lex.c
 web2w
 web2w.c
 web2w.h
-cdvitype.w
 CONTENTS.tex

@@ -5,6 +5,11 @@
 @z
 
 @x
+  @<generate string pool initializations@>@;
+@y
+@z
+
+@x
 predefine("true",PCONSTID,1);
 @y
 predefine("true",PCONSTID,1);
