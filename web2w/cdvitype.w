@@ -118,8 +118,8 @@ on \PASCAL's standard |output| file. The term |print| is used instead of
 |write| when this program writes on |output|, so that all such output
 could easily be redirected if desired.
 
-@d print(...) fprintf(output.f,__VA_ARGS__)
-@d print_ln(X,...) fprintf(output.f,X"\n",##__VA_ARGS__)
+@d print(...) fprintf(output,__VA_ARGS__)
+@d print_ln(X,...) fprintf(output,X"\n",##__VA_ARGS__)
 
 @p@!@!
 #include <stdint.h>
@@ -1336,7 +1336,7 @@ and |term_out| for terminal output.
 ASCII_code @!buffer[terminal_line_length+1];
 text_file @!term_in; /*the terminal, considered as an input file*/ 
 text_file @!term_out; /*the terminal, considered as an output file*/ 
-text_file @!output;
+FILE *output;
 
 @ Since the terminal is being used for both input and output, some systems
 need a special routine to make sure that the user can see a prompt message
@@ -2390,7 +2390,7 @@ and where it ends.
 
 @p int main(int argc, char **argv) { if (argc != 3) return 2;
 if ((dvi_file.f=fopen(argv[1],"r"))==NULL) return 2;
-if ((output.f=fopen(argv[2],"w"))==NULL) return 2;
+if ((output=fopen(argv[2],"w"))==NULL) return 2;
 initialize(); /*get all variables initialized*/
 dialog(); /*set up all the options*/ 
 @<Process the preamble@>;
