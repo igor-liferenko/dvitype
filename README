@@ -31,7 +31,7 @@ Add this `dvitype' script to PATH:
       esac
       shift
     done
-    exec /path/to/dvitype/dvitype ${1%.dvi}.dvi /dev/stdout "$output_level" "$page_start" "$max_pages" "$resolution" "$new_mag"
+    /path/to/dvitype/dvitype ${1%.dvi}.dvi /dev/stdout "$output_level" "$page_start" "$max_pages" "$resolution" "$new_mag"
 
 -----------------------------------
 
