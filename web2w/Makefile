@@ -8,4 +8,4 @@ all:
 	@sed '821s/file/File/;1752,1756s/+/,/g' dvitype.web >dvitype-web2w.web
 	./web2w -o cdvitype.w dvitype-web2w.web
 	patch -s cdvitype.w cdvitype.patch
-	weave dvitype >/dev/null && sed -i 1s/webmac/pwebmac/ dvitype.tex && pdftex dvitype >/dev/null && tex dvitype >/dev/null
+	weave dvitype >/dev/null && sed -i 1s/webmac/pwebmac/ dvitype.tex && pdftex dvitype >/dev/null
