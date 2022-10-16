@@ -4,4 +4,4 @@ all:
 	tie -c dvitype.ch dvitype.w path.ch args.ch >/dev/null
 	ctangle dvitype dvitype
 	gcc dvitype.c -o dvitype -lm
-	cweave -f dvitype && pdftex dvitype >/dev/null
+	cweave -f dvitype
