@@ -129,8 +129,11 @@ could easily be redirected if desired.
 #include <string.h>
 #include <math.h>
 
-#define abs(X) ((X)>-(X)?(X):-(X))
 #define chr(X) ((unsigned char)(X))
+#define abs(X) ((X)>-(X)?(X):-(X))
+
+@h
+
 #define get(file) @[fread(&((file).d),sizeof((file).d),1,(file).f)@]
 #define read(file,x) @[x=file.d,get(file)@]
 #define eof(file) @[(file.f==NULL||feof(file.f))@]
@@ -140,8 +143,6 @@ could easily be redirected if desired.
 #define write(file,...) @[fprintf(file.f,__VA_ARGS__)@]
 #define write_ln(file,X) @[write(file,X"\n")@]
 #define read_ln(file) @[do { while (!eoln(file)) get(file); get(file); } while (0)@]
-
-@h
 
 @<Labels in the outer block@>@;
 @<Constants in the outer block@>@;
