@@ -33,6 +33,8 @@ Add this `dvitype' script to PATH:
     done
     /path/to/dvitype/dvitype ${1%.dvi}.dvi /dev/stdout "$output_level" "$page_start" "$max_pages" "$resolution" "$new_mag"
 
+Adjust path.ch
+
 -----------------------------------
 
 Other WEB programs converted to CWEB:
