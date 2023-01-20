@@ -31,7 +31,7 @@
 +#define reset(file,name) @[file.f=fopen(name+1,"r"),file.f!=NULL?get(file):0@]
 +#define write(file,...) @[fprintf(file.f,__VA_ARGS__)@]
 +#define write_ln(file,X) @[write(file,X"\n")@]
-+#define read_ln(file) @[do { while (!eoln(file)) get(file); get(file); } while (0)@]
++#define read_ln(file) @[do get(file); while (!eoln(file))@]
 +
  @<Labels in the outer block@>@;
  @<Constants in the outer block@>@;
