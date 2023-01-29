@@ -32,5 +32,7 @@ Add this `dvitype' script to PATH:
       shift
     done
     /path/to/dvitype/dvitype ${1%.dvi}.dvi /dev/stdout "$output_level" "$page_start" "$max_pages" "$resolution" "$new_mag"
-
+    ret=$?
+    /path/to/tex/newline
+    exit $ret
 Adjust path.ch
