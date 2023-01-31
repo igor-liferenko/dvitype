@@ -35,4 +35,5 @@ Add this `dvitype' script to PATH:
     ret=$?
     /path/to/tex/newline
     exit $ret
+
 Adjust path.ch
