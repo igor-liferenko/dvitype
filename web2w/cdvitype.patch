@@ -15,7 +15,7 @@
 +#include <string.h>
 +#include <math.h>
 +
-+#define chr(X) ((unsigned char)(X))
++#define chr(X) (X)
 +#define abs(X) ((X)>-(X)?(X):-(X))
 +
 +@h
@@ -306,23 +306,6 @@
      } 
    text_ptr=0;
    } 
-@@ -1740,11 +1761,11 @@
- consider a simpler routine that computes the first parameter of each
- opcode.
- 
--@d four_cases(X)	X: X: case 1: X: case 2: X: case 3
--@d eight_cases(X)	four_cases(X): four_cases(X: case 4)
--@d sixteen_cases(X)	eight_cases(X): eight_cases(X: case 8)
--@d thirty_two_cases(X)	sixteen_cases(X): sixteen_cases(X: case 16)
--@d sixty_four_cases(X)	thirty_two_cases(X): thirty_two_cases(X: case 32)
-+@d four_cases(X)	X: X+1: X+2: X+3
-+@d eight_cases(X)	four_cases(X): four_cases(X+4)
-+@d sixteen_cases(X)	eight_cases(X): eight_cases(X+8)
-+@d thirty_two_cases(X)	sixteen_cases(X): sixteen_cases(X+16)
-+@d sixty_four_cases(X)	thirty_two_cases(X): thirty_two_cases(X+32)
- 
- @p int first_par(eight_bits o)
- {@+switch (o) {
 @@ -1815,10 +1836,10 @@
  cur_font=invalid_font; /*set current font undefined*/ 
  s=0;h=0;v=0;w=0;x=0;y=0;z=0;hh=0;vv=0;
