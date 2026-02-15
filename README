@@ -31,10 +31,8 @@ Add this `dvitype' script to PATH:
     done
     /path/to/dvitype/dvitype ${1%.dvi}.dvi /tmp/dvitype.$$ "$output_level" "$page_start" "$max_pages" "$resolution" "$new_mag"
     ret=$?
-    touch /tmp/dvitype.$$
-    sed -i '$a\' /tmp/dvitype.$$
-    cat /tmp/dvitype.$$
-    rm /tmp/dvitype.$$
+    sed '$a\' /tmp/dvitype.$$ 2>/dev/null
+    rm -f /tmp/dvitype.$$
     exit $ret
 
 Adjust path.ch
