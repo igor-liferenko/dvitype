@@ -796,9 +796,9 @@
  and where it ends.
  
 -@p int main(void) {initialize(); /*get all variables initialized*/ 
-+@p int main(int argc, char **argv) { if (argc != 3) return 2;
-+if ((dvi_file.f=fopen(argv[1],"r"))==NULL) return 2;
-+if ((output=fopen(argv[2],"w"))==NULL) return 2;
++@p int main(int argc, char **argv) { if (argc != 3) return 1;
++if ((dvi_file.f=fopen(argv[1],"r"))==NULL) return 1;
++if ((output=fopen(argv[2],"w"))==NULL) return 1;
 +initialize(); /*get all variables initialized*/
  dialog(); /*set up all the options*/ 
  @<Process the preamble@>;
