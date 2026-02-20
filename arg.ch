@@ -59,7 +59,7 @@ term_out.f=fopen("/dev/null","w");
 @z
 
 @x
-@p int main(int argc, char **argv) { if (argc != 3) return 2;
+@p int main(int argc, char **argv) { if (argc != 3) return 1;
 @y
-@p int main(int argc, char **argv) { if (argc != 8) return 2; av = argv + 3;
+@p int main(int argc, char **argv) { if (argc != 8) return 1; av = argv + 3;
 @z
