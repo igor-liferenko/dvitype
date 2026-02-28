@@ -35,7 +35,7 @@
  @^system dependencies@>
  
 -@d abort(...)	{@+print( ' ' ,__VA_ARGS__);jump_out();
-+@d abort(...) {@+print(" "__VA_ARGS__);jump_out();
++@d abort(...) {print(" "__VA_ARGS__);jump_out();
      } 
 -@d bad_dvi(...)	abort("Bad DVI file: ",__VA_ARGS__, '!' )
 +@d bad_dvi(X,...) abort("Bad DVI file: "X"!",##__VA_ARGS__)
@@ -43,7 +43,7 @@
  
  @p void jump_out(void)
 -{@+exit(0);
-+{@+exit(1);
++{exit(1);
  } 
  
  @*The character set.
@@ -52,7 +52,7 @@
  
  @p void open_dvi_file(void) /*prepares to read packed bytes in |dvi_file|*/ 
 -{@+reset(dvi_file);
-+{@+get(dvi_file);
++{get(dvi_file);
  cur_loc=0;
  } 
  @#
@@ -61,7 +61,7 @@
  @<Glob...@>=
  int @!cur_loc; /*where we are about to look, in |dvi_file|*/ 
 -uint8_t @!cur_name0[name_length], *const @!cur_name = @!cur_name0-1; /*external name,
-+uint8_t @!cur_name0[name_length+1], *const @!cur_name = @!cur_name0-1; /*external name,
++unsigned char cur_name0[name_length+1], *const cur_name=cur_name0-1; /*external name,
    with no lower case letters*/ 
  
  @ It turns out to be convenient to read four bytes at a time, when we are
@@ -70,7 +70,7 @@
  
  @p int dvi_length(void)
 -{@+set_pos(dvi_file,-1);return cur_pos(dvi_file);
-+{@+fseek(dvi_file.f,0,SEEK_END);return ftell(dvi_file.f);
++{fseek(dvi_file.f,0,SEEK_END);return ftell(dvi_file.f);
  } 
  @#
  void move_to_byte(int n)
@@ -83,7 +83,7 @@
    } 
  } 
  
-@@ -1101,11 +1120,11 @@
+@@ -1101,7 +1120,7 @@
  @<Store character-width indices at the end of the |width| table@>;
  @<Read and convert the width values, setting up the |in_width| table@>;
  @<Move the widths from |in_width| to |width|, and append |pixel_width| values@>;
@@ -91,22 +91,7 @@
 +width_ptr=wp;return true;
  label9997: print_ln("---not loaded, TFM file is bad");
  @.TFM file is bad@>
--label9998: return false;
--label9999: ;} 
-+return false;
-+}
- 
- @ @<Read past the header...@>=
- read_tfm_word();lh=b2*256+b3;
-@@ -1114,7 +1133,7 @@
- if (width_ptr+font_ec[nf]-font_bc[nf]+1 > max_widths) 
-   {@+print_ln("---not loaded, DVItype needs larger width table");
- @.DVItype needs larger...@>
--    goto label9998;
-+    return false;
-   } 
- wp=width_ptr+font_ec[nf]-font_bc[nf]+1;
- read_tfm_word();nw=b0*256+b1;
+ label9998: return false;
 @@ -1316,6 +1335,7 @@
  ASCII_code @!buffer[terminal_line_length+1];
  text_file @!term_in; /*the terminal, considered as an input file*/ 
@@ -120,7 +105,7 @@
  @^system dependencies@>
  
 -@d update_terminal	break(term_out) /*empty the terminal output buffer*/ 
-+@d update_terminal	fflush(term_out.f) /*empty the terminal output buffer*/
++@d update_terminal fflush(term_out.f) /*empty the terminal output buffer*/
  
  @ During the dialog, \.{DVItype} will treat the first blank space in a
  line as the end of that line. Therefore |input_ln| makes sure that there
@@ -252,12 +237,12 @@
  @^system dependencies@>
  
 -@d default_directory_name	"TeXfonts:" /*change this to the correct name*/ 
-+@d default_directory_name	"TeXfonts/" /*change this to the correct name*/
++@d default_directory_name "TeXfonts/" /*change this to the correct name*/
  @d default_directory_name_length	9 /*change this to the correct length*/ 
  
  @<Glob...@>=
 -uint8_t @!default_directory0[default_directory_name_length], *const @!default_directory = @!default_directory0-1;
-+uint8_t @!default_directory0[default_directory_name_length+1], *const @!default_directory = @!default_directory0-1;
++unsigned char default_directory0[default_directory_name_length+1], *const default_directory=default_directory0-1;
  
  @ @<Set init...@>=
 -default_directory=default_directory_name;
