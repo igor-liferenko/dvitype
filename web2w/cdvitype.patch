@@ -232,12 +232,7 @@
    } 
  @.this font is magnified@>
  incr(nf); /*now the new font is officially present*/ 
-@@ -1619,14 +1638,14 @@
- The string variable |default_directory| contains the name of this area.
- @^system dependencies@>
- 
--@d default_directory_name	"TeXfonts:" /*change this to the correct name*/ 
-+@d default_directory_name	"TeXfonts:" /*change this to the correct name*/ 
+@@ -1623,10 +1642,10 @@
  @d default_directory_name_length	9 /*change this to the correct length*/ 
  
  @<Glob...@>=
