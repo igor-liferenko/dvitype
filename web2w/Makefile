@@ -1,5 +1,6 @@
 all:
-	ctangle web2w web2w-dvitype
+	tie -c web2w.ch web2w.w simplify.ch web2w-dvitype.ch >/dev/null
+	ctangle web2w web2w
 	patch -so web-dvitype.l web.l web-dvitype.patch
 	flex -o web.lex.c web-dvitype.l
 	patch -so pascal-dvitype.y pascal.y pascal-dvitype.patch
