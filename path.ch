@@ -1,7 +1,13 @@
 @x
 enum {@+@!name_length=50@+}; /*a file name shouldn't be longer than this*/
 @y
-enum {@+@!name_length=200@+}; /*a file name shouldn't be longer than this*/
+enum {@+@!name_length=256@+}; /*a file name shouldn't be longer than this*/
+@z
+
+@x
+uint8_t @!r; /*index into |cur_name|*/
+@y
+uint16_t @!r; /*index into |cur_name|*/
 @z
 
 @x
