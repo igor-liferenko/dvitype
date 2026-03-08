@@ -61,7 +61,7 @@
  @<Glob...@>=
  int @!cur_loc; /*where we are about to look, in |dvi_file|*/ 
 -uint8_t @!cur_name0[name_length], *const @!cur_name = @!cur_name0-1; /*external name,
-+unsigned char cur_name0[name_length+1], *const cur_name=cur_name0-1; /*external name,
++unsigned char cur_name0[name_length+1], *const cur_name = cur_name0-1; /*external name,
    with no lower case letters*/ 
  
  @ It turns out to be convenient to read four bytes at a time, when we are
@@ -237,7 +237,7 @@
  
  @<Glob...@>=
 -uint8_t @!default_directory0[default_directory_name_length], *const @!default_directory = @!default_directory0-1;
-+unsigned char default_directory0[default_directory_name_length+1], *const default_directory=default_directory0-1;
++unsigned char default_directory0[default_directory_name_length+1], *const default_directory = default_directory0-1;
  
  @ @<Set init...@>=
 -default_directory=default_directory_name;
