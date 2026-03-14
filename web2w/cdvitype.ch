@@ -1,19 +1,13 @@
 @x
-enum {@+@!name_length=50@+}; /*a file name shouldn't be longer than this*/
-@y
-enum {@+@!name_length=50@+}; /*a file name shouldn't be longer than this*/
-@z
-
-@x
 uint8_t @!r; /*index into |cur_name|*/
 @y
-uint8_t @!r; /*index into |cur_name|*/
+int       r; /*index into |cur_name|*/
 @z
 
 @x
 @d default_directory_name	"TeXfonts:" /*change this to the correct name*/
 @y
-@d default_directory_name "TeXfonts/" /*change this to the correct name*/
+@d default_directory_name	"TeXfonts/" /*change this to the correct name*/
 @z
 
 @x

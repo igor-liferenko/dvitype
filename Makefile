@@ -1,6 +1,6 @@
 all:
 	make -C web2w
-	cp web2w/cdvitype.w dvitype.w
-	tie -c dvitype.ch dvitype.w file.ch path.ch arg.ch undef.ch >/dev/null
+	tie -m dvitype.w web2w/cdvitype.w web2w/cdvitype.ch >/dev/null
+	tie -c dvitype.ch dvitype.w path.ch arg.ch undef.ch >/dev/null
 	ctangle dvitype dvitype
 	gcc dvitype.c -o dvitype -lm
