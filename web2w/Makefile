@@ -1,13 +1,17 @@
 all:
-	ctangle web2w web2w-dvitype
+	tie -c web2w.ch web2w.w tab.ch web2w-dvitype.ch >/dev/null
+	ctangle web2w web2w
 	patch -so web-dvitype.l web.l web-dvitype.patch
 	flex -o web.lex.c web-dvitype.l
 	patch -so pascal-dvitype.y pascal.y pascal-dvitype.patch
 	bison --warnings=none -d -v pascal-dvitype.y
 	gcc -o web2w web2w.c web.lex.c pascal-dvitype.tab.c
 	cp dvitype.web dvitype-web2w.web
+	@sed -i "s/(''''/('''_'/" dvitype-web2w.web
+	@sed -i "s/\([,(]\)'\([] .*!+/)=wxyz[]\)'/\1'\2_'/" dvitype-web2w.web
 	@sed -i '/@d four_cases/,+4s/+/,/g' dvitype-web2w.web
 	@sed -i 's/|packed file of 0..255|//' dvitype-web2w.web
 	./web2w -o cdvitype.w dvitype-web2w.web
+	@sed -i 's/"\(.\)_"/"\1"/;s/\([^_]\),\(["(]\)/\1, \2/g' cdvitype.w
 	@sed -i '/@d four_cases/,+4s/: case/+/g' cdvitype.w
 	patch -s cdvitype.w cdvitype.patch
