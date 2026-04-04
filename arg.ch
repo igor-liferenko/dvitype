@@ -11,14 +11,14 @@ buffer[k]=' ';
 }
 @y
 @p
-char **arg;
+char **av;
 void input_ln(void) /*inputs next argv*/
 {
   int k = 0;
-  while ((k < terminal_line_length) && (*arg)[k] != 0)
-    buffer[k] = (*arg)[k], k++;
+  while ((k < terminal_line_length) && (*av)[k] != 0)
+    buffer[k] = (*av)[k], k++;
   buffer[k] = ' ';
-  arg++;
+  av++;
 }
 @z
 
@@ -61,5 +61,5 @@ term_out.f=fopen("/dev/null","w");
 @x
 @p int main(int argc, char **argv) { assert(argc==3);
 @y
-@p int main(int argc, char **argv) { assert(argc==8); arg = argv + 3;
+@p int main(int argc, char **argv) { assert(argc==8); av = argv + 3;
 @z

@@ -63,7 +63,7 @@
  
  @p void open_dvi_file(void) /*prepares to read packed bytes in |dvi_file|*/ 
 -{@+reset(dvi_file);
-+{ assert((dvi_file.f=fopen(av[1],"r"))!=NULL); get(dvi_file);
++{  reset(dvi_file,dvi_name); assert(dvi_file.f!=NULL); assert(!ferror(dvi_file.f));
  cur_loc=0;
  } 
  @#
@@ -108,7 +108,7 @@
  text_file @!term_in; /*the terminal, considered as an input file*/ 
  text_file @!term_out; /*the terminal, considered as an output file*/ 
 +text_file output;
-+char **av;
++char *dvi_name;
  
  @ Since the terminal is being used for both input and output, some systems
  need a special routine to make sure that the user can see a prompt message
@@ -697,8 +697,8 @@
  
 -@p int main(void) {initialize(); /*get all variables initialized*/ 
 +@p int main(int argc, char **argv) { assert(argc==3);
++dvi_name = argv[1]-1;
 +assert((output.f=fopen(argv[2],"w"))!=NULL);
-+av = argv;
 +initialize(); /*get all variables initialized*/
  dialog(); /*set up all the options*/ 
  @<Process the preamble@>;
