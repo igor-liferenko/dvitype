@@ -63,7 +63,7 @@
  
  @p void open_dvi_file(void) /*prepares to read packed bytes in |dvi_file|*/ 
 -{@+reset(dvi_file);
-+{  reset(dvi_file,dvi_name); assert(dvi_file.f!=NULL); assert(!ferror(dvi_file.f));
++{  reset(dvi_file,dvi_name);
  cur_loc=0;
  } 
  @#
