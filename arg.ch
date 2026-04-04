@@ -1,7 +1,7 @@
 @x
 @p void input_ln(void) /*inputs a line from the terminal*/
 {@+uint8_t k;
-update_terminal;term_in.f=stdin;
+update_terminal;reset(term_in,"TTY:");
 if (eoln(term_in)) read_ln(term_in);
 k=0;
 while ((k < terminal_line_length)&&!eoln(term_in))
