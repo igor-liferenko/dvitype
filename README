@@ -1,6 +1,7 @@
 Add this `dvitype' script to PATH:
 
     #!/bin/sh
+    # NOTE: the same option names as in TL are used
     while true; do
       case $1 in
       -output-level)

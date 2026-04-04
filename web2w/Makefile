@@ -12,6 +12,6 @@ all:
 	@sed -i '/@d four_cases/,+4s/+/,/g' dvitype-web2w.web
 	@sed -i 's/|packed file of 0..255|//' dvitype-web2w.web
 	./web2w -o cdvitype.w dvitype-web2w.web
-	@sed -i 's/"\(.\)_"/"\1"/;s/\([^_]\),\(["(]\)/\1, \2/g' cdvitype.w
+	@sed -i 's/: 1\b//g;s/,\([_"(].[^;]\)/, \1/g;s/"\(.\)_"/"\1"/' cdvitype.w
 	@sed -i '/@d four_cases/,+4s/: case/+/g' cdvitype.w
 	patch -s cdvitype.w cdvitype.patch

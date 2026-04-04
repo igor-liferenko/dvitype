@@ -1,7 +1,7 @@
 @x
 @p void input_ln(void) /*inputs a line from the terminal*/
 {@+uint8_t k;
-update_terminal;if(!term_in.f)term_in.f=stdin,get(term_in);
+update_terminal;term_in.f=stdin;
 if (eoln(term_in)) read_ln(term_in);
 k=0;
 while ((k < terminal_line_length)&&!eoln(term_in))
@@ -11,14 +11,14 @@ buffer[k]=' ';
 }
 @y
 @p
-char **av;
+char **arg;
 void input_ln(void) /*inputs next argv*/
 {
   int k = 0;
-  while ((k < terminal_line_length) && (*av)[k] != 0)
-    buffer[k] = (*av)[k], k++;
+  while ((k < terminal_line_length) && (*arg)[k] != 0)
+    buffer[k] = (*arg)[k], k++;
   buffer[k] = ' ';
-  av++;
+  arg++;
 }
 @z
 
@@ -59,7 +59,7 @@ term_out.f=fopen("/dev/null","w");
 @z
 
 @x
-@p int main(int argc, char **argv) { if (argc != 3) return 1;
+@p int main(int argc, char **argv) { assert(argc==3);
 @y
-@p int main(int argc, char **argv) { if (argc != 8) return 1; av = argv + 3;
+@p int main(int argc, char **argv) { assert(argc==8); arg = argv + 3;
 @z
