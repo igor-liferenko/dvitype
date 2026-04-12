@@ -480,9 +480,9 @@
  if ((v > 0)&&(p > 0)) if (v > infinity-p) 
 -  {@+error("arithmetic overflow! parameter changed from ",
 +  {  error("arithmetic overflow! parameter changed from %d to %d",
-+    p, infinity-v);
  @.arithmetic overflow...@>
 -    p: 1," to ", infinity-v: 1);
++    p, infinity-v);
    p=infinity-v;
    } 
  if ((v < 0)&&(p < 0)) if (-v > p+infinity) 
@@ -664,22 +664,22 @@
  m=get_byte();
 -if (m!=id_byte) print_ln("identification in byte ", cur_loc-1: 1,
 +if (m!=id_byte) print_ln("identification in byte %d should be %d!", cur_loc-1,
-+    id_byte);
  @.identification...should be n@>
 -    " should be ", id_byte: 1,"!");
++    id_byte);
  k=cur_loc;m=223;
  while ((m==223)&&!eof(dvi_file)) m=get_byte();
 -if (!eof(dvi_file)) bad_dvi("signature in byte ", cur_loc-1: 1,
 +if (!eof(dvi_file)) bad_dvi("signature in byte %d should be 223",
-+    cur_loc-1)
  @.signature...should be...@>
 -    " should be 223")@;
++    cur_loc-1)
  else if (cur_loc < k+4) 
 -  print_ln("not enough signature bytes at end of file (",
 +  print_ln("not enough signature bytes at end of file (%d)",
-+    cur_loc-k);
  @.not enough signature bytes...@>
 -    cur_loc-k: 1,")");
++    cur_loc-k);
  
  @ @<Process the font definitions...@>=
  @/do@+{k=get_byte();
