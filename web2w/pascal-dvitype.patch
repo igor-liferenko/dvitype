@@ -1,6 +1,3 @@
-diff --git a/web2w/pascal.y b/web2w/pascal.y
---- a/web2w/pascal.y
-+++ b/web2w/pascal.y
 @@ -223,7 +223,7 @@
           }
         ;
