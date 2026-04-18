@@ -1,6 +1,3 @@
-diff --git a/web2w/web.l b/web2w/web.l
---- a/web2w/web.l
-+++ b/web2w/web.l
 @@ -19,7 +19,7 @@
  */
  %{
