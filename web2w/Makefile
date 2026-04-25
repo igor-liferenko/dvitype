@@ -1,5 +1,5 @@
 all:
-	tie -c web2w.ch web2w.w tab.ch web2w-dvitype.ch >/dev/null
+	tie -c web2w.ch web2w.w tab.ch web2w-dvitype.ch at-dvitype.ch >/dev/null
 	ctangle web2w web2w
 	patch -so web-dvitype.l web.l web-dvitype.patch
 	flex -o web.lex.c web-dvitype.l
