@@ -154,8 +154,8 @@
 +print_ln("  Maximum number of pages = %d", max_pages);
 +print("  Output level = %d", out_mode);
  switch (out_mode) {
- case errors_only: print_ln(" (showing bops, fonts, and error messages only)");break;
- case terse: print_ln(" (terse)");break;
+ case errors_only: print_ln(" (showing bops, fonts, and error messages only)"); break;
+ case terse: print_ln(" (terse)"); break;
 @@ -1478,8 +1501,8 @@
      print_ln(" (the works: same as level 3 in this DVItype)");
      } 

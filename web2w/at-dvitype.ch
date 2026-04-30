@@ -29,11 +29,17 @@ case ATSLASH:
 @z
 
 @x
+  if (t->previous->tag!=PSEMICOLON && t->previous->tag!=CSEMICOLON
       &&t->previous->tag!=PEND) wputs("@@;");
   if (!dead_end(t->up,t->lineno)) wprint("@@+break;");
 @y
+  if (t->previous->tag!=PSEMICOLON && t->previous->tag!=CSEMICOLON
       &&t->previous->tag!=PEND) wputs(" ");
-  if (!dead_end(t->up,t->lineno)) wprint("break;");
+  if (!dead_end(t->up,t->lineno)) {
+    if (t->previous->tag==PSEMICOLON || t->previous->tag==CSEMICOLON)
+      wputs(" ");
+    wprint("break;");
+  }
 @z
 
 @x
